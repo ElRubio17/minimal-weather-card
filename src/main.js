@@ -56,8 +56,8 @@ class MinimalWeatherCard extends LitElement {
 
     const iconPath = `/local/weather-icons/${this.state}.svg`;
     const bgColor = this.config.bg_dynamic
-      ? `var(--mw-bg-${this.state}, var(--mw-bg-default, #fff))`
-      : "var(--mw-bg-default, #fff)";
+      ? `var(--minimal-weather-bg-${this.state}, var(--minimal-weather-bg-default, #fff))`
+      : "var(--minimal-weather-bg-default, #fff)";
 
     return html`
       <ha-card
