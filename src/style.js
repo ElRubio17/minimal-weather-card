@@ -1,13 +1,19 @@
-import { css } from "lit";
+import { css } from "https://unpkg.com/lit@2.6.1/index.js?module";
 
 export const styles = css`
   :host {
+    --minimal-weather-transition-time: 0.5s;
+  }
+
+  ha-card {
+    // background-color: var(--minimal-weather-bg-color, #303030);
+    background-image: var(--minimal-weather-bg-color, #303030);
     display: block;
-    padding: var(--minimal-weather-card-padding, 16px);
+    padding: var(--minimal-weather-card-padding, 12px);
     border-radius: var(--minimal-weather-card-border-radius, 8px);
     box-shadow: var(--minimal-weather-card-shadow, none);
-    background-color: var(--minimal-weather-bg-default, #ffffff);
-    transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    // background-color: var(--minimal-weather-bg,--primary-background-color, #303030);
+    transition: background-color var(--minimal-weather-transition-time) ease-in-out, opacity var(--minimal-weather-transition-time) ease-in-out;
     opacity: 1;
   }
 
@@ -23,51 +29,57 @@ export const styles = css`
   .icon {
     width: 48px;
     height: 48px;
+    padding-right: 12px;
+  }
+  
+  img {
+    width: 45px;
   }
 
   .content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    text-align: right;
+    text-align: left;
   }
 
   .state {
+    padding-bottom: var(--state-padding-bottom, 10px);
     font-size: var(--minimal-weather-state-text-size, 1.2em);
-    color: var(--minimal-weather-state-text-color, #000);
+    color: var(--minimal-weather-state-text-color, --primary-text-color ,#000);
+    font-weight: var(--minimal-weather-state-font-weight, bold);
+    line-height: var(--minimal-weather-state-line-height, 1.2);
+    letter-spacing: var(--minimal-weather-state-letter-spacing, normal);
+    transition: color var(--minimal-weather-transition-time) ease-in-out;
   }
 
   .attributes {
     display: flex;
+    // justify-content: flex-start;
     justify-content: space-between;
     font-size: var(--minimal-weather-attr-text-size, 0.9em);
-    color: var(--minimal-weather-attr-text-color, #555);
+    color: var(--minimal-weather-attr-text-color, --primary-text-color, #555);
     font-weight: var(--minimal-weather-attr-font-weight, normal);
     line-height: var(--minimal-weather-attr-line-height, 1.2);
     letter-spacing: var(--minimal-weather-attr-letter-spacing, normal);
+    transition: color var(--minimal-weather-transition-time) ease-in-out;
   }
 
   .attr {
     display: flex;
     align-items: center;
   }
+  .attr:nth-child(1) {
+    // padding-right: 25px;
+  }
 
   .attr ha-icon {
     margin-right: 4px;
+    --mdc-icon-size: 15px;
+
   }
 
   :host([dynamic]) {
     background-color: var(--minimal-weather-bg-current, var(--minimal-weather-bg-default, #ffffff));
   }
-
-  :host([state="clear-night"]) { --minimal-weather-bg-current: #2c3e50; }
-  :host([state="cloudy"]) { --minimal-weather-bg-current: #95a5a6; }
-  :host([state="fog"]) { --minimal-weather-bg-current: #7f8c8d; }
-  :host([state="hail"]) { --minimal-weather-bg-current: #d0d3d4; }
-  :host([state="lightning"]) { --minimal-weather-bg-current: #9b59b6; }
-  :host([state="rainy"]) { --minimal-weather-bg-current: #3498db; }
-  :host([state="snowy"]) { --minimal-weather-bg-current: #ecf0f1; }
-  :host([state="sunny"]) { --minimal-weather-bg-current: #f39c12; }
-  :host([state="windy"]) { --minimal-weather-bg-current: #1abc9c; }
-  :host([state="exceptional"]) { --minimal-weather-bg-current: #e74c3c; }
 `;

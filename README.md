@@ -118,4 +118,25 @@ eg: sunny.png
 type: custom:minimal-weather-card
 entity: weather.your_weather_entity
 ```
+Image
+#### Full configuration
+code + image
+#### CSS custom variabiles
+per modificare le variabili ci sono due vie:
+  - modificare le variabili in theme.yaml:
+    1. vai in config/theme.yaml
+    2. aggiungi variabili da modoficare e salva
+    3. vai in dev tool di home assistant
+    4. chiamata serviri
+    5. chiama il servizio reload frontend
+    6. ricarica le cache nel browser
+  - modificare le varibili in lovelance.yaml utilizzero il componente card_mod di ..., se non gia installato ti invito a installarlo:
+    1. in lovelance.yaml aggiungiamo il nostro codice con la porzione di modifiche di variabili css
+    2. aggiorniamo
+    3. se necessario ricarico cache
+la differenza tra i due metodi è che modificato in theme.yaml andro a modificare tutte le card minimal-weather-card presenti. Se modifico in lovelance.yaml ho la possibilita di kodificare la singola card
 
+
+#### Responsive
+
+#### Hidden attributes
